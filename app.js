@@ -186,52 +186,29 @@ export function validateMove(state, move) {
  */
 
 function getPlayerMove(state, player) {
-	console.log("player Move")
+	console.log(player.name + " (" + player.letter + ")");
 
+  var isValidMove = false;
+  var move = {};
 
+  while(!isValidMove) {
 
-  getPlayerMove(playerx)
+    var row = readlineSync.question ('What Row?');
+    var column = readlineSync.question ('What Column?');
 
-  if (playerx.validateMove()[0][0] === 'x') {
-    return true;
+    move = {
+      row: row,
+      column: column,
+    }
+
+    var validated = validateMove(state, move);
+
+    if (validated) {
+      isValidMove = true;
+    }
   }
 
-  if (playerx.validateMove()[0][1] === 'x') {
-    return true;
-  }
-
-  if (playerx.validateMove()[0][2] === 'x') {
-    return true;
-  }
-
-  if (playerx.validateMove()[1][0] === 'x') {
-    return true;
-  }
-
-  if (playerx.validateMove()[1][1] === 'x') {
-    return true;
-  }
-
-  if (playerx.validateMove()[1][2] === 'x') {
-    return true;
-  }
-
-  if (playerx.validateMove()[2][0] === 'x') {
-    return true;
-  }
-
-  if (playerx.validateMove()[2][1] === 'x') {
-    return true;
-  }
-
-  if (playerx.validateMove()[2][2] === 'x') {
-    return true;
-  }
-
-  else {
-    return false;
-  }
-
+  return move;
 
 }
 
@@ -262,11 +239,50 @@ function getPlayerMove(state, player) {
  */
 
 export function isGameWon(state) {
-  // CHECK FOR HORIZONTAL WINS ON EACH ROW
+  var playermove = getPlayerMove(state, player)
+
+
+  if (state[0][0] !== " " && state[0][0] === state[0][1] && state[0][1] === state[0][2]) {
+    return state[0][0];
+  }
+
+  if (state[1][0] !== " " && state[1][0] === state[1][1] && state[0][2] === state[0][2]) {
+    return state[1][0];
+  }
+
+  if (state[2][0] !== " " && state[2][0] === state[2][1] && state[2][1] === state[2][2]) {
+    return state[2][0];
+  }
+
+
+
+
 
   // CHECK FOR VERTICAL WINS ON EACH COLUMN
 
+  if (state[2][0] !== " " && state[2][0] === state[1][0] && state[1][0] === state[0][0]) {
+    return state[2][0];
+  }
+
+  if (state[2][1] !== " " && state[2][1] === state[1][1] && state[1][1] === state[0][1]) {
+    return state[2][1];
+  }
+
+  if (state[2][2] !== " " && state[2][2] === state[1][2] && state[1][2] === state[0][2]) {
+    return state[2][2];
+  }
+
   // CHECK FOR DIAGONAL WINS
+
+  if (state[0][0] !== " " && state[0][0] === state[1][1] && state[1][1] === state[2][2]) {
+    return state[0][0];
+  }
+
+  if (state[2][0] !== " " && state[2][0] === state[1][1] && state[1][1] === state[0][2]) {
+    return state[2][0];
+  }
+
+
 }
 
 /**
@@ -309,8 +325,11 @@ export function isGameWon(state) {
 
 function runGame() {
   // DISPLAY WELCOME BANNER
+    console.log("Welcome");
 
   // ASK FOR PLAYER NAMES AND CREATE PLAYERS
+  console.log("Inter Name");
+  contestants = player();
 
   // CREATE INITIAL GAME STATE
   var gameBoard = [
@@ -318,8 +337,9 @@ function runGame() {
     [' ', ' ', ' '],
     [' ', ' ', ' '],
   ];
-
+  var gameOver = false
   // WHILE LOOP FOR WHEN GAME IS NOT WON
+    while(!gameOver)
 
     // DISPLAY BOARD
 
