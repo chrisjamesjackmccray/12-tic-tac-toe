@@ -22,8 +22,12 @@ import readlineSync from 'readline-sync';
  */
 
 export function Player(name, letter) {
+  this.name = name;
+  this.letter = letter;
 
 }
+
+
 
 /**
  * We need to be able to display the board after
@@ -67,8 +71,49 @@ function drawBoard(state) {
  */
 
 export function emptySpotsLeft(state) {
-	// YOUR CODE HERE
+
+  if (state[0][0] === ' ') {
+    return true;
+  }
+
+  else if (state[0][1] === ' ') {
+    return true;
+  }
+
+  else if (state[0][2] === ' ') {
+    return true;
+  }
+
+  else if (state[1][0] === ' ') {
+    return true;
+  }
+
+  else if (state[1][1] === ' ') {
+    return true;
+  }
+
+  else if (state[1][2] === ' ') {
+    return true;
+  }
+
+  else if (state[2][0] === ' ') {
+    return true;
+  }
+
+  else if (state[2][1] === ' ') {
+    return true;
+  }
+
+  else if (state[2][2] === ' ') {
+    return true;
+  }
+
+  else {
+    return false;
+  }
+
 }
+
 
 /**
  * We need a function to validate player moves.
@@ -91,7 +136,23 @@ export function emptySpotsLeft(state) {
  */
 
 export function validateMove(state, move) {
-  // YOUR CODE HERE
+
+  if (move.column > 3 || move.column < 1) {
+    return false;
+  }
+
+  if (move.row > 3 || move.row < 1) {
+    return false;
+  }
+
+  if (state[move.row -1][move.column -1] === ' ') {
+    return true;
+  }
+
+  else {
+    return false;
+  }
+
 }
 /**
  * We need a function to ask a user for their move.
@@ -125,11 +186,53 @@ export function validateMove(state, move) {
  */
 
 function getPlayerMove(state, player) {
-	// DISPLAY CURRENT PLAYER NAME AND LETTER
+	console.log("player Move")
 
-  // ASK WHAT ROW THEY WANT
 
-  // ASK WHAT COLUMN THEY WANT
+
+  getPlayerMove(playerx)
+
+  if (playerx.validateMove()[0][0] === 'x') {
+    return true;
+  }
+
+  if (playerx.validateMove()[0][1] === 'x') {
+    return true;
+  }
+
+  if (playerx.validateMove()[0][2] === 'x') {
+    return true;
+  }
+
+  if (playerx.validateMove()[1][0] === 'x') {
+    return true;
+  }
+
+  if (playerx.validateMove()[1][1] === 'x') {
+    return true;
+  }
+
+  if (playerx.validateMove()[1][2] === 'x') {
+    return true;
+  }
+
+  if (playerx.validateMove()[2][0] === 'x') {
+    return true;
+  }
+
+  if (playerx.validateMove()[2][1] === 'x') {
+    return true;
+  }
+
+  if (playerx.validateMove()[2][2] === 'x') {
+    return true;
+  }
+
+  else {
+    return false;
+  }
+
+
 }
 
 
