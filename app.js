@@ -328,8 +328,21 @@ function runGame() {
     console.log("Welcome");
 
   // ASK FOR PLAYER NAMES AND CREATE PLAYERS
-  console.log("Inter Name");
-  contestants = player();
+
+
+
+  // use readlineSync to get player 1's Name
+    readlineSync.question(player.name(state, player));
+    readlineSync.question(player.name(state, player));
+
+  // call new Player();
+    var player1 = newplayer(player.name, x);
+    var player2 = newplayer(player.name, y);
+
+  // create variable to track the current player
+    var currentplayer = player1();
+    var currentplayer = player2();
+
 
   // CREATE INITIAL GAME STATE
   var gameBoard = [
@@ -337,23 +350,58 @@ function runGame() {
     [' ', ' ', ' '],
     [' ', ' ', ' '],
   ];
+
   var gameOver = false
+
   // WHILE LOOP FOR WHEN GAME IS NOT WON
-    while(!gameOver)
+    while(!gameOver) {
 
     // DISPLAY BOARD
+    drawBoard();
 
     // GET MOVE FOR CURRENT PLAYER
+     var getmove = getPlayerMove(gameBoard, currentplayer);
+
 
     // UPDATE gameBoard with new move
+      var newmove = (move.column.move.row) (currentPlayer.letter);
+
+      getPlayerMove = currentplayer.letter;
+
 
     // CHECK FOR WIN CONDITION
+     var iswon = isGameWon(gameBoard);
+    if (gameBoard = isGameWon) {
+      console.log("Congratulations, You Won!");
+    }
 
     // CHECK FOR MOVES LEFT
+    var board = emptySpotsLeft(gameBoard); {
+      if (gameBoard = board) {
+        return false;
+      }
+
+      else if (gameBoard = iswon) {
+        return true;
+      }
+
+      else {
+        console.log("It's a tie!");
+      }
+
+    }
 
     // UPDATE CURRENT PLAYER
 
-  // CONGRATULATE WINNER OR DECLARE IT A TIE
+    if (currentPlayer = player1) {
+      return player2;
+    }
+
+    else if (currentPlayer = Player2) {
+      return Player1;
+    }
+  }
+
 }
 
 /**
