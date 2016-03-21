@@ -239,7 +239,6 @@ function getPlayerMove(state, player) {
  */
 
 export function isGameWon(state) {
-  var playermove = getPlayerMove(state, player)
 
 
   if (state[0][0] !== " " && state[0][0] === state[0][1] && state[0][1] === state[0][2]) {
@@ -355,14 +354,14 @@ function runGame() {
     while(!gameOver) {
 
     // DISPLAY BOARD
-    drawBoard();
+    drawBoard(gameBoard);
 
     // GET MOVE FOR CURRENT PLAYER
      var getmove = getPlayerMove(gameBoard, currentplayer);
 
 
     // UPDATE gameBoard with new move
-      gameBoard[getmove.row - 1][getmove.column - 1] = currentplayer.letter;
+      gameBoard[getmove.row - 1][getmove.column - 1] = currentPlayer.letter;
 
 
     // CHECK FOR WIN CONDITION
@@ -385,7 +384,7 @@ function runGame() {
     // UPDATE CURRENT PLAYER
 
     if (currentPlayer === player1) {
-     currentPlayer = player1;
+     currentPlayer = player2;
     }
 
     else if (currentPlayer === Player2) {
@@ -393,7 +392,7 @@ function runGame() {
     }
   }
 
-}
+
 
 /**
  * Finally, we call our runGame function so that
