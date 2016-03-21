@@ -385,7 +385,7 @@ function runGame() {
     // UPDATE CURRENT PLAYER
 
     if (currentPlayer === player1) {
-      return player2;
+     currentPlayer = player1;
     }
 
     else if (currentPlayer === Player2) {
