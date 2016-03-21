@@ -362,7 +362,7 @@ function runGame() {
 
 
     // UPDATE gameBoard with new move
-      gameBoard[move.row - 1][move.column - 1] = currentplayer.letter;
+      gameBoard[getmove.row - 1][getmove.column - 1] = currentplayer.letter;
 
 
     // CHECK FOR WIN CONDITION
@@ -389,7 +389,7 @@ function runGame() {
     }
 
     else if (currentPlayer === Player2) {
-      return Player1;
+     currentPlayer = player1;
     }
   }
 
