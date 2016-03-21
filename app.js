@@ -332,17 +332,15 @@ function runGame() {
 
 
   // use readlineSync to get player 1's Name
-    readlineSync.question(player.name(state, player));
-    readlineSync.question(player.name(state, player));
+    var p1name = readlineSync.question("What is player 1's name?");
+    var p2name = readlineSync.question("What is player 2's name?");
 
   // call new Player();
-    var player1 = newplayer(player.name, x);
-    var player2 = newplayer(player.name, y);
+    var player1 = new Player(p1name, 'X');
+    var player2 = new Player(p2name, 'O');
 
   // create variable to track the current player
-    var currentplayer = player1();
-    var currentplayer = player2();
-
+    var currentPlayer = player1;
 
   // CREATE INITIAL GAME STATE
   var gameBoard = [
@@ -364,40 +362,33 @@ function runGame() {
 
 
     // UPDATE gameBoard with new move
-      var newmove = (move.column.move.row) (currentPlayer.letter);
-
-      getPlayerMove = currentplayer.letter;
+      gameBoard[move.row - 1][move.column - 1] = currentplayer.letter;
 
 
     // CHECK FOR WIN CONDITION
      var iswon = isGameWon(gameBoard);
-    if (gameBoard = isGameWon) {
+    if (iswon) {
       console.log("Congratulations, You Won!");
+      gameOver = true;
     }
 
+
+
+
     // CHECK FOR MOVES LEFT
-    var board = emptySpotsLeft(gameBoard); {
-      if (gameBoard = board) {
-        return false;
-      }
-
-      else if (gameBoard = iswon) {
-        return true;
-      }
-
-      else {
-        console.log("It's a tie!");
-      }
-
+    var board = emptySpotsLeft(gameBoard);
+    if (!board) {
+      console.log("It's a tie!");
+      gameOver = true; }
     }
 
     // UPDATE CURRENT PLAYER
 
-    if (currentPlayer = player1) {
+    if (currentPlayer === player1) {
       return player2;
     }
 
-    else if (currentPlayer = Player2) {
+    else if (currentPlayer === Player2) {
       return Player1;
     }
   }
