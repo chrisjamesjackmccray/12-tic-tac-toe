@@ -371,16 +371,6 @@ function runGame() {
       gameOver = true;
     }
 
-
-
-
-    // CHECK FOR MOVES LEFT
-    var board = emptySpotsLeft(gameBoard);
-    if (!board) {
-      console.log("It's a tie!");
-      gameOver = true; }
-    }
-
     // UPDATE CURRENT PLAYER
 
     if (currentPlayer === player1) {
@@ -391,6 +381,17 @@ function runGame() {
      currentPlayer = player1;
     }
   }
+
+
+
+    // CHECK FOR MOVES LEFT
+    var board = emptySpotsLeft(gameBoard);
+    if (!board) {
+      console.log("It's a tie!");
+      gameOver = true; }
+    }
+
+
 
 
 
