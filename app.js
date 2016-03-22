@@ -357,7 +357,7 @@ function runGame() {
     drawBoard(gameBoard);
 
     // GET MOVE FOR CURRENT PLAYER
-     var getmove = getPlayerMove(gameBoard, currentplayer);
+     var getmove = getPlayerMove(gameBoard, currentPlayer);
 
 
     // UPDATE gameBoard with new move
@@ -387,7 +387,7 @@ function runGame() {
      currentPlayer = player2;
     }
 
-    else if (currentPlayer === Player2) {
+    else if (currentPlayer === player2) {
      currentPlayer = player1;
     }
   }
